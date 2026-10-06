@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>EV Charge Monitor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">⚡</div>
+      <div><strong>EV Charge Monitor</strong><span>Charging station portal</span></div>
+    </div>
+    <div id="systemBadge" class="system-badge">● Connecting...</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow" id="chargerIdLabel">CHARGER</div>
+        <h1 id="chargerName">Loading charger...</h1>
+        <p id="chargerLocation">Please wait while the charger is loaded.</p>
+      </div>
+      <div class="status-card">
+        <div><span id="statusDot" class="status-dot"></span><strong id="chargerStatus">Loading</strong></div>
+        <small id="statusDetail">Connecting to charging backend...</small>
+      </div>
+    </section>
+
+    <div id="errorBox" class="error hidden"></div>
+
+    <section class="dashboard-grid">
+      <div>
+        <article class="card">
+          <div class="section-head">
+            <h2>Current Charging Session</h2>
+            <span id="sessionBadge" class="badge">NO SESSION</span>
+          </div>
+
+          <div class="timer-panel">
+            <div id="timerState" class="timer-state">WAITING</div>
+            <div id="timer" class="timer">00:00:00</div>
+            <div id="remainingText" class="muted">No active charging session.</div>
+            <div class="progress"><div id="progressFill"></div></div>
+            <div class="progress-labels">
+              <span id="startLabel">Started —</span>
+              <span>3h limit · 30m grace</span>
+            </div>
+          </div>
+
+          <div class="metrics">
+            <div class="metric"><span>Charging Power</span><strong id="power">—</strong><small>kW</small></div>
+            <div class="metric"><span>Energy Delivered</span><strong id="energy">—</strong><small>kWh</small></div>
+            <div class="metric"><span>Penalty</span><strong id="penalty">₱0</strong><small>current session</small></div>
+          </div>
+        </article>
+
+        <article class="card chart-card">
+          <div class="section-head"><h2>Charging Activity</h2><span class="muted">Live</span></div>
+          <div id="activityChart" class="chart"></div>
+          <div class="chart-labels"><span>-60m</span><span>-45m</span><span>-30m</span><span>-15m</span><span>Now</span></div>
+        </article>
+      </div>
+
+      <aside>
+        <article class="card">
+          <div class="section-head"><h2>Session Details</h2></div>
+          <div class="details">
+            <div><span>Session ID</span><strong id="sessionId">—</strong></div>
+            <div><span>User</span><strong id="userId">—</strong></div>
+            <div><span>Vehicle</span><strong id="vehicleId">—</strong></div>
+            <div><span>Start Time</span><strong id="sessionStart">—</strong></div>
+            <div><span>Current Power</span><strong id="power2">—</strong></div>
+            <div><span>Energy</span><strong id="energy2">—</strong></div>
+          </div>
+
+          <div id="limitNotice" class="notice hidden"></div>
+          <button id="endButton" class="primary-btn" disabled>End Charging Session</button>
+        </article>
+
+        <article class="card small-card">
+          <div class="section-head"><h2>How it works</h2></div>
+          <ol>
+            <li>Scan the QR code attached to the charger.</li>
+            <li>Confirm the charger and session.</li>
+            <li>Monitor charging time and energy.</li>
+            <li>End the session before the grace period expires.</li>
+          </ol>
+        </article>
+      </aside>
+    </section>
+
+    <section class="card history-card">
+      <div class="section-head"><h2>Recent Sessions</h2><span class="muted">Latest 10</span></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Session</th><th>Start</th><th>Duration</th><th>Energy</th><th>Status</th><th>Penalty</th></tr></thead>
+          <tbody id="historyBody"><tr><td colspan="6" class="empty">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
