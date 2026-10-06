@@ -4,7 +4,7 @@
  Never place Wallbox secrets/tokens in this file.
 */
 const CONFIG = {
-  BACKEND_URL: "https://script.google.com/macros/s/AKfycbwwmjL_LLcvx3NhYi3VrF86tHEVocsRv4nQI3tdFuIGKmHssbbo59LxsLZbwp9T6dauRQ/exec",
+  BACKEND_URL: "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE",
   REFRESH_MS: 15000,
   TIMER_MS: 1000
 };
